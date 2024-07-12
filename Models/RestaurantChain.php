@@ -72,35 +72,35 @@ class RestaurantChain extends Company implements FileConvertible {
 
   private function getLocationsMd(): string {
     $locationsMd = '';
-    for ($i = 0; count($this->locations); $i++) {
-      $locationsMd .= $this->locations[$i].toMarkdown();
+    for ($i = 0; count($this->restaurantLocations); $i++) {
+      $locationsMd .= $this->restaurantLocations[$i].toMarkdown();
     }
     return $locationsMd;
   }
 
   private function getLocationsArray(): array {
     $locationsArray = [];
-    for ($i = 0; count($this->locations); $i++) {
-      $locationsArray[] = $this->locations[$i].toArray();
+    for ($i = 0; count($this->restaurantLocations); $i++) {
+      $locationsArray[] = $this->restaurantLocations[$i].toArray();
     }
     return $locationsArray;
   }
 
-  private function getLocationsStr(): array {
-    $locationsStrArray = [];
-    for ($i = 0; count($this->locations); $i++) {
-      $locationsStrArray[] = $this->locations[$i].toString();
+  private function getLocationsStr(): string {
+    $locationsStr = '';
+    foreach ($this->restaurantLocations as $location) {
+      $locationsStr .= $location->toString();
     }
-    return implode(', ', $locationsStrArray);
+    return $locationsStr;
   }
 
   public function toString(): string {
     return sprintf(
-      "RestaurantChain: %d\nName: %d\nWebsite: %s\nRestaurantLocations: %s\n\n",
+      "==========\nRestaurantChain: %d\n- Name: %s\n- Website: %s\n- RestaurantLocations:\n%s\n",
       $this->chainId,
       $this->name,
       $this->website,
-      $this->getLocationsStr()
+      $this->getLocationsStr(),
     );
   }
 

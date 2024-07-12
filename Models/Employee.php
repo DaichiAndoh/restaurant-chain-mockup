@@ -58,10 +58,9 @@ class Employee extends User implements FileConvertible {
 
   public function toString(): string {
     return sprintf(
-      "Employee: %d\nName: %d\nRole: %s\nJobTitle: %s\n\n",
+      ">> Employee: %d\n- Name: %s\n- Role: %s\n- JobTitle: %s\n",
       $this->id,
-      $this->firstName,
-      $this->lastName,
+      $this->firstName . ' ' . $this->lastName,
       $this->role,
       $this->jobTitle
     );

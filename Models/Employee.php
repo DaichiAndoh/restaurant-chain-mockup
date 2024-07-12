@@ -68,13 +68,12 @@ class Employee extends User implements FileConvertible {
 
   public function toHTML(): string {
     return sprintf("
-      <div>
-        <h2>Employee: %d</h2>
+      <div style=\"border: 1px solid black; padding: 10px 20px; margin: 8px;\">
+        <p>id: %d</p>
         <p>Name: %s %s</p>
         <p>Role: %s</p>
         <p>JobTitle: %s</p>
-      </div>
-      <br>",
+      </div>",
       $this->id,
       $this->firstName,
       $this->lastName,

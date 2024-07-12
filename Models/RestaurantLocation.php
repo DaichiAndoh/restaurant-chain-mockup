@@ -84,16 +84,26 @@ class RestaurantLocation implements FileConvertible {
     );
   }
 
+  private function getEmployeesHTML(): string {
+    $employeesHTML = '';
+    foreach ($this->employees as $employee) {
+      $employeesHTML .= $employee->toHTML();
+    }
+    return $employeesHTML;
+  }
+
   public function toHTML(): string {
     return sprintf("
-      <div>
-        <h2>RestaurantLocation</h2>
-        <p>Name: %s</p>
-        <p>Employees: %s</p>
-      </div>
-      <br>",
+      <div style=\"border: 1px solid black; padding: 10px 20px; margin: 8px;\">
+        <p><strong>Name:</strong> %s</p>
+
+        <h4>Employees</h4>
+        <div>
+          %s
+        </div>
+      </div>",
       $this->name,
-      $this->getEmployeesStr()
+      $this->getEmployeesHTML()
     );
   }
 

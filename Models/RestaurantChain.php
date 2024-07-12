@@ -88,19 +88,31 @@ class RestaurantChain extends Company implements FileConvertible {
     );
   }
 
+  private function getLocationsHTML(): string {
+    $locationsHTML = '';
+    foreach ($this->restaurantLocations as $location) {
+      $locationsHTML .= $location->toHTML();
+    }
+    return $locationsHTML;
+  }
+
   public function toHTML(): string {
     return sprintf("
-      <div>
+      <div style=\"width: 60%%; margin: 0 auto; padding: 10px 20px;\">
         <h2>RestaurantChain: %d</h2>
-        <p>Name: %s %s</p>
-        <p>Website: %s</p>
-        <p>RestaurantLocations: %s</p>
-      </div>
-      <br>",
+        <p><strong>Name:</strong> %s</p>
+        <p><strong>Website:</strong> <a href=\"%s\" target=\"_blank\" rel=\"noopener noreferrer\">%s</a></p>
+
+        <h4>RestaurantLocations:</h4>
+        <div>
+          %s
+        </div>
+      </div>",
       $this->chainId,
       $this->name,
       $this->website,
-      $this->getLocationsStr()
+      $this->website,
+      $this->getLocationsHTML()
     );
   }
 

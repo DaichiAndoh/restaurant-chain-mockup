@@ -84,18 +84,10 @@ class Employee extends User implements FileConvertible {
   }
 
   public function toMarkdown(): string {
-    return sprintf("
-      ## Employee: %d
-
-      - Name
-        - %s %s
-      - Role
-        - %s
-      - JobTitle
-        - %s\n",
+    return sprintf(
+      "  - Employee: %d\n    - Name:\n      - %s\n    - Role:\n      - %s\n    - JobTitle:\n      - %s\n",
       $this->id,
-      $this->firstName,
-      $this->lastName,
+      $this->firstName . ' ' . $this->lastName,
       $this->role,
       $this->jobTitle
     );

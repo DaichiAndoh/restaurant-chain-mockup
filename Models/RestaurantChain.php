@@ -70,14 +70,6 @@ class RestaurantChain extends Company implements FileConvertible {
     }
   }
 
-  private function getLocationsMd(): string {
-    $locationsMd = '';
-    for ($i = 0; count($this->restaurantLocations); $i++) {
-      $locationsMd .= $this->restaurantLocations[$i].toMarkdown();
-    }
-    return $locationsMd;
-  }
-
   private function getLocationsStr(): string {
     $locationsStr = '';
     foreach ($this->restaurantLocations as $location) {
@@ -112,16 +104,17 @@ class RestaurantChain extends Company implements FileConvertible {
     );
   }
 
-  public function toMarkdown(): string {
-    return sprintf("
-      ## RestaurantChain: %d
+  private function getLocationsMd(): string {
+    $locationsMd = '';
+    foreach ($this->restaurantLocations as $location) {
+      $locationsMd .= $location->toMarkdown();
+    }
+    return $locationsMd;
+  }
 
-      - Name
-        - %s %s
-      - Website
-        - %s
-      - RestaurantLocations
-        %s",
+  public function toMarkdown(): string {
+    return sprintf(
+      "## RestaurantChain: %d\n\n- Name:\n  - %s\n- Website:\n  - %s\n\n### RestaurantLocations\n\n%s\n",
       $this->chainId,
       $this->name,
       $this->website,

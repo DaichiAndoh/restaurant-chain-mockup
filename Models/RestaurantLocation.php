@@ -76,14 +76,6 @@ class RestaurantLocation implements FileConvertible {
     return $employeesStr;
   }
 
-  private function getEmployeesMd(): string {
-    $employeesMd = '';
-    for ($i = 0; count($this->employees); $i++) {
-      $employeesMd .= $this->employees[$i].toMarkdown();
-    }
-    return $employeesMd;
-  }
-
   public function toString(): string {
     return sprintf(
       "> RestaurantLocation\n- Name: %s\n- Employees:\n%s",
@@ -105,15 +97,17 @@ class RestaurantLocation implements FileConvertible {
     );
   }
 
-  public function toMarkdown(): string {
-    return sprintf("
-      ## RestaurantLocations: %d
+  private function getEmployeesMd(): string {
+    $employeesMd = '';
+    foreach ($this->employees as $employee) {
+      $employeesMd .= $employee->toMarkdown();
+    }
+    return $employeesMd;
+  }
 
-      - Name
-        - %s %s
-      - Employees
-        %s",
-      $this->chainId,
+  public function toMarkdown(): string {
+    return sprintf(
+      "#### RestaurantLocation\n\n- Name:\n  - %s\n- Employees\n%s\n",
       $this->name,
       $this->getEmployeesMd()
     );

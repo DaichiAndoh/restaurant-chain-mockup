@@ -78,14 +78,6 @@ class RestaurantChain extends Company implements FileConvertible {
     return $locationsMd;
   }
 
-  private function getLocationsArray(): array {
-    $locationsArray = [];
-    for ($i = 0; count($this->restaurantLocations); $i++) {
-      $locationsArray[] = $this->restaurantLocations[$i].toArray();
-    }
-    return $locationsArray;
-  }
-
   private function getLocationsStr(): string {
     $locationsStr = '';
     foreach ($this->restaurantLocations as $location) {
@@ -135,6 +127,14 @@ class RestaurantChain extends Company implements FileConvertible {
       $this->website,
       $this->getLocationsMd()
     );
+  }
+
+  private function getLocationsArray(): array {
+    $locationsArray = [];
+    foreach ($this->restaurantLocations as $location) {
+      $locationsArray[] = $location->toArray();
+    }
+    return $locationsArray;
   }
 
   public function toArray(): array {

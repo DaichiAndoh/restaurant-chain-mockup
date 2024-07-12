@@ -84,14 +84,6 @@ class RestaurantLocation implements FileConvertible {
     return $employeesMd;
   }
 
-  private function getEmployeesArray(): array {
-    $employeesArray = [];
-    for ($i = 0; count($this->employees); $i++) {
-      $employeesArray[] = $this->employees[$i].toArray();
-    }
-    return $employeesArray;
-  }
-
   public function toString(): string {
     return sprintf(
       "> RestaurantLocation\n- Name: %s\n- Employees:\n%s",
@@ -125,6 +117,14 @@ class RestaurantLocation implements FileConvertible {
       $this->name,
       $this->getEmployeesMd()
     );
+  }
+
+  private function getEmployeesArray(): array {
+    $employeesArray = [];
+    foreach ($this->employees as $employee) {
+      $employeesArray[] = $employee->toArray();
+    }
+    return $employeesArray;
   }
 
   public function toArray(): array {

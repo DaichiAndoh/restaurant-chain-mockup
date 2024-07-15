@@ -1,0 +1,32 @@
+@startuml restaurant chain mockup
+actor User
+participant HomePage
+participant FormPage
+participant DownloadProcess
+
+group static pattern
+User -> HomePage: access
+note right
+  create mockup
+end note
+User <-- HomePage: return mockup
+end
+|||
+
+group dynamic pattarn
+User -> FormPage: access
+User <-- FormPage: return form page
+User -> FormPage: input values
+note left
+  - Chain Max Number
+  - Location Max Number
+  - Employee Max Number
+  - Output Format
+end note
+FormPage -> DownloadProcess: send input values
+note right
+  create mockup data
+end note
+User <-- DownloadProcess: return mockup data(HTML, Markdown, JSON or Text)
+end
+@enduml

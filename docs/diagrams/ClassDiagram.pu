@@ -1,0 +1,119 @@
+@startuml restaurant chain mockup
+interface FileConvertible {
+  +toString(): string
+  +toHTML(): string
+  +toMarkdown(): string
+  +toArray(): array
+}
+
+class Company {
+  #string name
+  #int foundingYear
+  #string description
+  #string website
+  #string phone
+  #string industry
+  #string ceo
+  #bool isPubliclyTraded
+  #string country
+  #string founder
+  #int totalEmployees
+  +getName(): string
+  +getFoundingYear(): string
+  +getDescription(): string
+  +getWebsite(): string
+  +getPhone(): string
+  +getIndustry(): string
+  +getCeo(): string
+  +getIsPubliclyTraded(): string
+  +getCountry(): string
+  +getFounder(): string
+  +getTotalEmployees(): string
+}
+
+class RestaurantChain {
+  -int $chainId;
+  -array $restaurantLocations;
+  -string $cuisineType;
+  -int $numberOfLocations;
+  -string $parentCompany;
+  +getChainId(): int
+  +getLocations(): array
+  +addLocation(RestaurantLocation location): void
+  +printLocations(): void
+  -getLocationsStr(): string
+  -getLocationsHTML(): string
+  -getLocationsMd(): string
+  -getLocationsArray(): array
+  +{static} RandomGenerator(array): RestaurantChain
+}
+
+class RestaurantLocation {
+  -string $name
+  -string $address
+  -string $city
+  -string $state
+  -string $zipCode
+  -array $employees
+  -bool $isOpen
+  -bool $hasDriveThru
+  +getName(): string
+  +getAddress(): string
+  +getCity(): string
+  +getState(): string
+  +getZipCode(): string
+  +getEmployees(): array
+  +getEmployees(): array
+  +getIsOpen(): bool
+  +getHasDriveThru(): bool
+  +getEmployeeCount(): int
+  -getEmployeesStr(): string
+  -getEmployeesHTML(): string
+  -getEmployeesMd(): string
+  -getEmployeesArray(): array
+  +{static} locationRandomGenerator(array): RestaurantLocation
+  +{static} locationsRandomGenerator(array): array
+}
+
+class User {
+  #int id
+  #string firstName
+  #string lastName
+  #string email
+  #string hashedPassword
+  #string phoneNumber
+  #string address
+  #DateTime birthDate
+  #DateTime membershipExpirationDate
+  #string role
+  +getName(): string
+  +getRole(): string
+  +login(): bool
+  +updateProfile(): void
+  +renewMembership(): void
+  +changePassword(): void
+  +hasMembershipExpired(): bool
+}
+
+class Employee {
+  -string $jobTitle;
+  -float $salary;
+  -DateTime $startDate;
+  -array $awards;
+  +getJobTitle(): string
+  +{static} employeeRandomGenerator(): Employee
+  +{static} employeesRandomGenerator(int min, int max): array
+}
+
+
+FileConvertible <|.. Company
+FileConvertible <|.. RestaurantLocation
+FileConvertible <|.. User
+
+Company <|-- RestaurantChain
+User <|-- Employee
+
+RestaurantChain *-- RestaurantLocation
+RestaurantLocation o-- Employee
+@enduml
+∏

@@ -5,9 +5,8 @@ namespace Models;
 use DateTime;
 use Faker\Factory;
 use Models\User;
-use Interfaces\FileConvertible;
 
-class Employee extends User implements FileConvertible {
+class Employee extends User {
   private string $jobTitle;
   private float $salary;
   private DateTime $startDate;
@@ -46,10 +45,6 @@ class Employee extends User implements FileConvertible {
     $this->salary = $salary;
     $this->startDate = $startDate;
     $this->awards = $awards;
-  }
-
-  public function getRole(): string {
-    return $this->role;
   }
 
   public function getJobTitle(): string {

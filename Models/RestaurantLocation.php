@@ -52,16 +52,20 @@ class RestaurantLocation implements FileConvertible {
     return $this->state;
   }
 
-  public function getEmployees(): array {
-    return $this->employees;
-  }
-
   public function getZipCode(): string {
     return $this->zipCode;
   }
 
+  public function getEmployees(): array {
+    return $this->employees;
+  }
+
   public function getIsOpen(): bool {
     return $this->isOpen;
+  }
+
+  public function getHasDriveThru(): bool {
+    return $this->hasDriveThru;
   }
 
   public function getEmployeeCount(): int {

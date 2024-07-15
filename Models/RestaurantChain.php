@@ -3,10 +3,10 @@
 namespace Models;
 
 use Faker\Factory;
-use Interfaces\FileConvertible;
 use Models\Company;
+use Models\RestaurantLocation;
 
-class RestaurantChain extends Company implements FileConvertible {
+class RestaurantChain extends Company {
   private int $chainId;
   private array $restaurantLocations;
   private string $cuisineType;
@@ -60,7 +60,7 @@ class RestaurantChain extends Company implements FileConvertible {
     return $this->restaurantLocations;
   }
 
-  public function addLocation(mixed $location): void {
+  public function addLocation(RestaurantLocation $location): void {
     $this->restaurantLocations[] = $location;
   }
 

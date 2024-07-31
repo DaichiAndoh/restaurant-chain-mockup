@@ -1,4 +1,10 @@
 {
+    "autoload": {
+        "psr-4": {
+            "Interfaces\\": "Interfaces/",
+            "Models\\": "Models/"
+        }
+    },
     "require": {
         "fakerphp/faker": "^1.23"
     }

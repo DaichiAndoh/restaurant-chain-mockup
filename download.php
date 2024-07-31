@@ -1,13 +1,9 @@
 <?php
-spl_autoload_extensions('.php'); 
-spl_autoload_register();
-
 require_once 'vendor/autoload.php';
 
 use Models\Employee;
 use Models\RestaurantLocation;
 use Models\RestaurantChain;
-
 
 $CHAIN_MIN_NUM = 1;
 $CHAIN_MAX_NUM = 5;

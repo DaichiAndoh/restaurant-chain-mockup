@@ -1,27 +1,36 @@
 # restaurant-chain-mockup
 
-## Usage
+![HTML5](https://img.shields.io/badge/HTML5-E34F26?logo=html5&logoColor=white)
+![Bootstrap](https://img.shields.io/badge/Bootstrap-563D7C?logo=bootstrap&logoColor=white)
+![PHP](https://img.shields.io/badge/PHP-777BB4?logo=php&logoColor=white)
 
-```
-$ cd restaurant-chain-mockup
-$ php -S localhost:8000
-```
+## URL
 
-## Class Diagram
+https://rcm.d-andoh.com/
 
-![ClassDiagram](/docs/diagrams/ClassDiagram.png)
+## About
 
-## Sequence Diagram
+レストランチェーンのWebサイトのモックアップを生成します。
+また、以下の項目を設定した上でモックアップを生成することも可能です。
 
-![SequenceDiagram](/docs/diagrams/SequenceDiagram.png)
+| 設定項目 | 説明 |
+| ---- | ---- |
+| Chain Max Number | レストランチェーン数（1-5）  |
+| Location Max Number | 各レストランチェーンが持つ店舗数（1-5） |
+| Employee Max Number | 各店舗が雇用する従業員数（3-10） |
+| Output Format | 出力形式（HTML, Markdown, Json, Text） |
 
-## Pages
+## Usage, Pages
 
-### /
+### / or /index.php
+
+完全にランダムにモックアップが生成されます。
 
 ![Home](/docs/pages/Home.png)
 
 ### /form.php
+
+各値を設定することで、それらを踏まえたモックアップを生成できます。
 
 ![Form](/docs/pages/Form.png)
 
@@ -130,3 +139,21 @@ RestaurantChain: 547
 ...
 ...
 ```
+
+## Development
+
+### Set UP
+
+```
+$ cd restaurant-chain-mockup
+$ composer install
+$ php -S localhost:8000
+```
+
+### Class Diagram
+
+![ClassDiagram](/docs/diagrams/ClassDiagram.png)
+
+### Sequence Diagram
+
+![SequenceDiagram](/docs/diagrams/SequenceDiagram.png)

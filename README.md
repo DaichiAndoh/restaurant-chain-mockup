@@ -147,7 +147,7 @@ RestaurantChain: 547
 ```
 $ cd restaurant-chain-mockup
 $ composer install
-$ php -S localhost:8000
+$ php -S localhost:8000 -t Public
 ```
 
 ### Class Diagram

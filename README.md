@@ -6,7 +6,10 @@
 
 ## URL
 
-https://rcm.d-andoh.com/
+> [!WARNING]
+> 現在このURLは無効です。
+
+~~https://rcm.d-andoh.com/~~
 
 ## About
 
